@@ -5,13 +5,30 @@
     <div class="form-group">
         <label asp-for="Name">Name</label>
         <input class="form-control" asp-for="Name" />
-        <span></span>
+        <span asp-validation-for="Name"></span>
     </div>
     <div class="form-group">
         <label asp-for="EmployerId">Employer</label>
         <select class="form-control" asp-for="EmployerId" asp-items="Model.Employers"></select>
+        <span asp-validation-for="EmployerId"></span>
     </div>
+    @if (Model.Skills == null)
+    {
 
-    <input type="submit" value="Add Job" />
-</form>
+    }
+    else
+    {
+        <div class="form-group">
+            @foreach (var skill in Model.Skills)
+            {
+                <label for="@skill.Id">@skill.Name</label>
+                <input id="@skill.Id" type="checkbox" name="selectedSkills" value="@skill.Id" />
+            }
+        </div>
+    }
+        <input type="submit" value="Add Job" />
+
+        <a asp-controller="Employer" asp-action="Add">Add Employer</a>
+        <a asp-controller="Skill" asp-action="Add">Add Skill</a>
+    </form>
 
