@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using TechJobsPersistent.Data;
 using TechJobsPersistent.Models;
 using TechJobsPersistent.ViewModels;
@@ -60,7 +58,6 @@ namespace TechJobsPersistent.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 int jobId = viewModel.JobId;
                 int skillId = viewModel.SkillId;
 
@@ -96,6 +93,5 @@ namespace TechJobsPersistent.Controllers
 
             return View(jobSkills);
         }
-
     }
 }

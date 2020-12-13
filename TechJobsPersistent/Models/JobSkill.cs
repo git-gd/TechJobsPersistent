@@ -1,5 +1,4 @@
-﻿using System;
-namespace TechJobsPersistent.Models
+﻿namespace TechJobsPersistent.Models
 {
     public class JobSkill
     {

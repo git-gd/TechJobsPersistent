@@ -1,10 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
-using TechJobsPersistent.Data;
 using TechJobsPersistent.Models;
 
 namespace TechJobsPersistent.ViewModels
@@ -28,7 +24,7 @@ namespace TechJobsPersistent.ViewModels
             Skills = skills;
         }
 
-        public AddJobViewModel(){}
+        public AddJobViewModel() { }
 
         public void SetEmployers(List<Employer> employers)
         {

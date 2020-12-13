@@ -1,11 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using TechJobsPersistent.Models;
 using TechJobsPersistent.Data;
-using Microsoft.EntityFrameworkCore;
+using TechJobsPersistent.Models;
 using TechJobsPersistent.ViewModels;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860

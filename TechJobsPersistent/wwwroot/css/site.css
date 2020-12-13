@@ -70,9 +70,9 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-/* Dropdown Menu Button */
+/* Dropdown Menu Button - transparent to allow it to blend in to any color scheme */
 .btn-menu {
-    color: #fff;
-    background-color: #fff;
+    color: transparent;
+    background-color: transparent;
     border: none;
 }

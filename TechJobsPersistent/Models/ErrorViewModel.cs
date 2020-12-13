@@ -1,5 +1,3 @@
-using System;
-
 namespace TechJobsPersistent.Models
 {
     public class ErrorViewModel

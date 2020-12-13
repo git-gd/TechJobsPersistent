@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.AspNetCore.Mvc;
+using TechJobsPersistent.Data;
 using TechJobsPersistent.Models;
 using TechJobsPersistent.ViewModels;
-using TechJobsPersistent.Data;
-using Microsoft.EntityFrameworkCore;
 
 namespace TechJobsPersistent.Controllers
 {
