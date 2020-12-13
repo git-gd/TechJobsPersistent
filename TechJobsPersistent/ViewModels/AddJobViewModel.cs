@@ -11,9 +11,9 @@ namespace TechJobsPersistent.ViewModels
 {
     public class AddJobViewModel
     {
-        [Required(ErrorMessage ="Name is required")]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
-        [Required(ErrorMessage ="Employer ID Missing!")]
+        [Required(ErrorMessage = "Employer ID Missing!")]
         public int EmployerId { get; set; }
 
         public List<SelectListItem> Employers { get; set; }
@@ -23,9 +23,9 @@ namespace TechJobsPersistent.ViewModels
         public AddJobViewModel(List<Employer> employers, List<Skill> skills)
         {
             Employers = new List<SelectListItem>();
+            
             Skills = new List<Skill>();
-
-            Skills = skills.ToList(); // shallow or okay?
+            Skills = skills.ToList();
 
             foreach (var employee in employers)
             {

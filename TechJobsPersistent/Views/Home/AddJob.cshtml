@@ -14,17 +14,19 @@
     </div>
     @if (Model.Skills == null)
     {
-
+        <p>No Sills Yet!</p>
     }
     else
     {
-        <div class="form-group">
-            @foreach (var skill in Model.Skills)
-            {
-                <label for="@skill.Id">@skill.Name</label>
-                <input id="@skill.Id" type="checkbox" name="selectedSkills" value="@skill.Id" />
-            }
-        </div>
+<div class="form-group">
+    @foreach (var skill in Model.Skills)
+    {
+        @*<label for="@skill.Id">@skill.Name</label>*@
+        @*<input id="@skill.Id" name="@skill.Name" type="checkbox" value="@skill.Id" checked=@skill.IsChecked />*@
+
+        @*<input asp-for="@skill.Name" type="checkbox" />*@
+    }
+</div>
     }
         <input type="submit" value="Add Job" />
 
