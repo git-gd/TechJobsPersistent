@@ -57,14 +57,7 @@ namespace TechJobsPersistent.Controllers
             // ... this can't possibly be the best way to do this
             if (addJobViewModel.Employers == null)
             {
-                List<Employer> employers = context.Employers.ToList();
-
-                addJobViewModel.Employers = new List<SelectListItem>();
-                employers.ForEach(e => addJobViewModel.Employers.Add(new SelectListItem
-                {
-                    Value = e.Id.ToString(),
-                    Text = e.Name
-                }));
+                addJobViewModel.SetEmployers(context.Employers.ToList());
             }
             if (addJobViewModel.Skills == null)
             {

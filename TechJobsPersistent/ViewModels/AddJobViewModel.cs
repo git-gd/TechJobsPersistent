@@ -16,18 +16,24 @@ namespace TechJobsPersistent.ViewModels
         [Required(ErrorMessage = "Employer ID Missing!")]
         public int EmployerId { get; set; }
 
-        public List<SelectListItem> Employers { get; set; }
+        // I used a private setter because these lists need to be rebuilt if the ModelState is invalid
+        public List<SelectListItem> Employers { get; private set; }
 
         public List<Skill> Skills { get; set; }
 
         public AddJobViewModel(List<Employer> employers, List<Skill> skills)
         {
-            Employers = new List<SelectListItem>();
-            
-            Skills = new List<Skill>();
-            Skills = skills.ToList();
+            SetEmployers(employers);
+            Skills = skills;
+        }
 
-            foreach (var employee in employers)
+        public AddJobViewModel(){}
+
+        public void SetEmployers(List<Employer> employers)
+        {
+            Employers = new List<SelectListItem>();
+
+            foreach (Employer employee in employers)
             {
                 Employers.Add(new SelectListItem
                 {
@@ -36,7 +42,5 @@ namespace TechJobsPersistent.ViewModels
                 }); ;
             }
         }
-
-        public AddJobViewModel(){}
     }
 }
