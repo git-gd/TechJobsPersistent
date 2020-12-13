@@ -16,7 +16,8 @@ namespace TechJobsPersistent.ViewModels
         [Required(ErrorMessage = "Employer ID Missing!")]
         public int EmployerId { get; set; }
 
-        // I used a private setter because these lists need to be rebuilt if the ModelState is invalid
+        // A private setter is used to DRY the code because the List is set both in the constructor and the controller
+        // when ModelState is invalid
         public List<SelectListItem> Employers { get; private set; }
 
         public List<Skill> Skills { get; set; }

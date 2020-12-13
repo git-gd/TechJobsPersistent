@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using TechJobsPersistent.Models;
 using TechJobsPersistent.ViewModels;
 using TechJobsPersistent.Data;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace TechJobsPersistent.Controllers
@@ -37,7 +33,7 @@ namespace TechJobsPersistent.Controllers
         }
 
         [HttpPost]
-        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)
+        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, String[] selectedSkills)
         {
             if (ModelState.IsValid)
             {
@@ -50,19 +46,27 @@ namespace TechJobsPersistent.Controllers
                 context.Jobs.Add(job);
                 context.SaveChanges();
 
+                // Our selected Skill Id is returned in the selectedSkills string Array
+                // Our job Id was just created by MySQL in the previous SaveChanges()
+                foreach (string selected in selectedSkills)
+                {
+                    JobSkill jobSkill = new JobSkill
+                    {
+                        SkillId = int.Parse(selected),
+                        JobId = job.Id
+                    };
+
+                    context.JobSkills.Add(jobSkill);
+                }
+
+                context.SaveChanges();
+
                 return Redirect("/home/");
             }
 
             // We need to repopulate the dropdown list if our ModelState is invalid
-            // ... this can't possibly be the best way to do this
-            if (addJobViewModel.Employers == null)
-            {
-                addJobViewModel.SetEmployers(context.Employers.ToList());
-            }
-            if (addJobViewModel.Skills == null)
-            {
-                addJobViewModel.Skills = context.Skills.ToList();
-            }
+            addJobViewModel.SetEmployers(context.Employers.ToList());
+            addJobViewModel.Skills = context.Skills.ToList();
 
             return View("AddJob", addJobViewModel);
         }
