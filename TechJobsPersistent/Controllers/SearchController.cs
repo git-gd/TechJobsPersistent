@@ -106,9 +106,9 @@ namespace TechJobsPersistent.Controllers
                         .Where(j => j.Employer.Name.Contains(searchTerm) || j.Name.Contains(searchTerm))
                     .Union(
                         context.JobSkills
-                            .Include(j => j.Job.Employer)
-                            .Where(j => j.Skill.Name.Contains(searchTerm))
-                            .Select(j => j.Job)
+                            .Include(js => js.Job.Employer)
+                            .Where(js => js.Skill.Name.Contains(searchTerm))
+                            .Select(js => js.Job)
                     ).ToList();
 
                     foreach (Job job in jobsFound)
