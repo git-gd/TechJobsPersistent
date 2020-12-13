@@ -18,12 +18,22 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="AddJob">Add Job</a>
-                        </li>                        
+                        @*bootstrap dropdown menus seemed to be a good fit to expand the add menu options*@
+                        <li class="dropdown">
+                            <div class="dropdown show">
+                                <a class="btn btn-menu dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Add
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" asp-controller="Home" asp-action="AddJob">Add Job</a>
+                                    <a class="dropdown-item" asp-controller="Employer" asp-action="Add">Add Employer</a>
+                                    <a class="dropdown-item" asp-controller="Skill" asp-action="Add">Add Skill</a>
+                                </div>
+                            </div>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="List" asp-action="Index">List Jobs</a>
-                        </li>                        
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Index">Search Jobs</a>
                         </li>
