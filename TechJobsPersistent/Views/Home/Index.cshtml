@@ -14,7 +14,7 @@
 }
 else
 {
-    <table class="table table-striped">
+    <table class="table table-striped table-hover">
         <thead class="thead-dark">
             <tr>
                 <th><a asp-controller="Home" asp-action="Index" asp-route-sort="Employer" style="color:@(@ViewBag.Sort == "Employer"?"lightblue;":"white;")">Employer</a></th>
@@ -27,13 +27,13 @@ else
         {
             <tr>
                 <td>
-                    @job.Employer.Name
+                    <a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.Id">@job.Employer.Name</a>
                 </td>
                 <td>
-                    @job.Employer.Location
+                    <a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.Id">@job.Employer.Location</a>
                 </td>
                 <td>
-                    <a asp-controller="Home" asp-action="Detail" asp-route-id="@job.Id">@job.Name</a>
+                    <a class="btn btn-block btn-link shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.Id">@job.Name</a>
                 </td>
             </tr>
         }

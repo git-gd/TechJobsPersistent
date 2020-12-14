@@ -1,21 +1,26 @@
 ﻿@model List<TechJobsPersistent.Models.Employer>
 
-<h1>Employers Currently Hiring</h1>
-
-@if (Model.Count == 0)
-{
-    <p>No employers are currently hiring!</p>
-}
-else
-{
-    <div>
-        <ul>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Employers Currently Hiring</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Count == 0)
+        {
+            <tr>
+                <td>No employers are currently hiring!</td>
+            </tr>
+        }
+        else
+        {
             @foreach (Employer employer in Model)
             {
-                <li>
-                    <a asp-controller="Employer" asp-action="About" asp-route-id="@employer.Id">@employer.Name</a>
-                </li>
+                <tr>
+                    <td><a class="btn btn-link btn-block text-left" asp-controller="Employer" asp-action="About" asp-route-id="@employer.Id">@employer.Name</a></td>
+                </tr>
             }
-        </ul>
-    </div>
-}
+        }
+    </tbody>
+</table>
