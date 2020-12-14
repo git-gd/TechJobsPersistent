@@ -3,42 +3,38 @@
     <h2 class="centered">View Jobs By Category</h2>
 </div>
 
-<table class="centeredTable">
+<table class="table table-bordered">
     <tr>
-        @foreach (var column in ViewBag.columns)
-        {
-            @if (column.Key != "all")
+        <thead class="thead-dark">
+            @foreach (var column in ViewBag.columns)
             {
+                @if (column.Key != "all")
+                {
                 <th>@column.Value</th>
+                }
             }
-        }
+        </thead>
     </tr>
-    <tr>
-        @foreach (var category in ViewBag.tableChoices)
-        {
-            <td>
-                <ul>
+        <tr>
+            @foreach (var category in ViewBag.tableChoices)
+            {
+                <td>
                     @if (category == "employer")
                     {
                         @foreach (var item in ViewBag.employers)
                         {
-                            <li>
-                                <a asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
-                            </li>
+                            <a class="btn btn-secondary mt-1" asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
+                                
                         }
                     }
                     else
                     {
                         @foreach (var item in ViewBag.skills)
                         {
-                            <li>
-                                <a asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
-                            </li>
+                            <a class="btn btn-secondary mt-1" asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
                         }
                     }
-
-                </ul>
-            </td>
-        }
-    </tr>
-</table>
+                </td>
+            }
+        </tr>
+    </table>
