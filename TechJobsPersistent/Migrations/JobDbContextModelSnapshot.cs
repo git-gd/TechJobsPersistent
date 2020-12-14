@@ -96,7 +96,7 @@ namespace TechJobsPersistent.Migrations
             modelBuilder.Entity("TechJobsPersistent.Models.JobSkill", b =>
                 {
                     b.HasOne("TechJobsPersistent.Models.Job", "Job")
-                        .WithMany("JobSkills")
+                        .WithMany()
                         .HasForeignKey("JobId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

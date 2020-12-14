@@ -9,6 +9,9 @@ namespace TechJobsPersistent.ViewModels
     {
         [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
+        
+        // EmployerId MUST BE POSITIVE - if the list is empty (no employers) this will return a 0 which is not a valid index
+        [Range(1, int.MaxValue, ErrorMessage ="An Employer Is Required")] 
         [Required(ErrorMessage = "Employer ID Missing!")]
         public int EmployerId { get; set; }
 
