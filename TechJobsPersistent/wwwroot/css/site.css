@@ -79,6 +79,5 @@ body {
 /* ASP-Validation error message text */
 .field-validation-error {
     color: red;
-    font-weight: bold;
     text-shadow: 1px 1px 2px #000000;
 }
