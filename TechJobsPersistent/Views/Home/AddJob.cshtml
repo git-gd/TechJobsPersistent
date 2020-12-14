@@ -21,16 +21,13 @@
     <div class="form-group">
         @foreach (var skill in Model.Skills)
         {<div class="checkbox">
-             <div class="form-inline">
-                 <input id="@skill.Id" name="selectedSkills" type="checkbox" value="@skill.Id" />
-                 <label for="@skill.Id">@skill.Name</label>
-             </div>
+                 <label><input id="@skill.Id" name="selectedSkills" type="checkbox" value="@skill.Id" checked="@Model.SelectedSkills.Contains(skill.Id.ToString())" /> @skill.Name</label>
         </div>
         }
     </div>
     }
     <input type="submit" value="Add Job" />
-
+    <hr />
     <p><a asp-controller="Employer" asp-action="Add">Add Employer</a></p>
     <p><a asp-controller="Skill" asp-action="Add">Add Skill</a></p>
 </form>

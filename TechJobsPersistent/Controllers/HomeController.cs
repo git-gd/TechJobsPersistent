@@ -64,9 +64,10 @@ namespace TechJobsPersistent.Controllers
                 return Redirect("/home/");
             }
 
-            // We need to repopulate the dropdown list if our ModelState is invalid
+            // We need to repopulate some fields when our ModelState is invalid
             addJobViewModel.SetEmployers(context.Employers.ToList());
             addJobViewModel.Skills = context.Skills.ToList();
+            addJobViewModel.SelectedSkills = selectedSkills;
 
             return View("AddJob", addJobViewModel);
         }

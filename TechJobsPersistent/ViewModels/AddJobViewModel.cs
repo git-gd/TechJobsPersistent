@@ -18,13 +18,18 @@ namespace TechJobsPersistent.ViewModels
 
         public List<Skill> Skills { get; set; }
 
-        public AddJobViewModel(List<Employer> employers, List<Skill> skills)
+        public string[] SelectedSkills { get; set; }
+
+        public AddJobViewModel(List<Employer> employers, List<Skill> skills) : this()
         {
             SetEmployers(employers);
             Skills = skills;
         }
 
-        public AddJobViewModel() { }
+        public AddJobViewModel()
+        {
+            SelectedSkills = new string[] { };
+        }
 
         public void SetEmployers(List<Employer> employers)
         {
