@@ -124,9 +124,10 @@ namespace TechJobsPersistent.Controllers
                 }
             }
 
-            ViewBag.searchType = searchType;
+            ViewBag.searchTerm = searchTerm;
+            ViewBag.searchType = searchType==null?"all":searchType;
             ViewBag.columns = ListController.ColumnChoices;
-            ViewBag.title = "Jobs with " + ListController.ColumnChoices[searchType] + ": " + searchTerm;
+            ViewBag.title = "Jobs with " + ListController.ColumnChoices[ViewBag.searchType] + ": " + searchTerm;
             ViewBag.jobs = displayJobs;
 
             return View("Index");

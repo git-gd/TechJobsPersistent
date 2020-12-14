@@ -5,7 +5,7 @@
     <form action="/search/results" method="post">
         <h2>Search by:</h2>
 
-        <p>
+        <div>
             @foreach (var column in ViewBag.columns)
             {
                 <span>
@@ -13,12 +13,12 @@
                     <label for="@column.Key">@column.Value</label>
                 </span>
             }
-        </p>
+        </div>
 
-        <p>
+        <div>
             <label for="searchTerm">Keyword:</label>
             <input type="text" name="searchTerm" id="searchTerm" />
-        </p>
+        </div>
 
         <input type="submit" value="Search" />
     </form>
@@ -42,3 +42,48 @@
         </table>
     }
 </div>
+<script>
+    function HighLight() {
+        let searched = "@ViewBag.searchTerm";
+        if (searched !== "") {
+            let pTags = document.getElementsByTagName("p");
+            for (let i = 0; i < pTags.length; i++)
+            {
+                let oldTxt = pTags[i].innerHTML;
+
+                /* Find and skip everything before the colon */
+                let txtIdx = oldTxt.indexOf(":") + 1; 
+
+                /* Find first searchterm */
+                txtIdx = oldTxt.toLowerCase().indexOf(searched.toLowerCase(), txtIdx);
+
+                /* Store the search result index */
+                let tmpIdx = txtIdx;
+
+                /* if search was not found set newTxt to oldTxt, otherwise copy the first part of oldTxt to newTxt */
+                let newTxt = (txtIdx > -1) ? oldTxt.substr(0, txtIdx) : oldTxt;
+
+                while (txtIdx >= 0 && txtIdx < oldTxt.length) {
+                    /* add code to highlight the searchterm */
+                    newTxt += "<span style='color:red;'>";
+                    newTxt += oldTxt.substr(txtIdx, searched.length);
+                    newTxt += "</span>";
+
+                    /* advance the index past the length of the searchterm string we just added */
+                    txtIdx += searched.length;
+                                        
+                    /* save the index of where we last copied text before checking for another match */
+                    tmpIdx = txtIdx;
+                    txtIdx = oldTxt.toLowerCase().indexOf(searched.toLowerCase(), txtIdx);
+
+                    /* if no new match is found, add the last of the oldTxt string to the end of newTxt */
+                    /* otherwise if a match is found, add the text between the last found and next found indexes */
+                    newTxt += (txtIdx < 0) ? oldTxt.substr(tmpIdx) : oldTxt.substr(tmpIdx, txtIdx - tmpIdx);
+                }
+
+                if (newTxt != oldTxt) pTags[i].innerHTML = newTxt;
+            }
+        }
+    }
+    window.onload = HighLight();
+</script>
