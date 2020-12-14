@@ -22,6 +22,7 @@ namespace TechJobsPersistent.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+            ViewBag.searchType = "all";
             ViewBag.columns = ListController.ColumnChoices;
             return View();
         }
