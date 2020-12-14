@@ -19,10 +19,19 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1 align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="List" asp-action="Index">List Jobs</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Search" asp-action="Index">Search Jobs</a>
+                        </li>
+                        <li class="dropdown">
+                            <div class="dropdown show">
+                                <a class="btn btn-menu dropdown-toggle" href="#" role="button" id="dropdownListMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    List
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="dropdownListMenuLink">
+                                    <a class="dropdown-item" asp-controller="List" asp-action="Index">List Jobs</a>
+                                    <a class="dropdown-item" asp-controller="Employer" asp-action="Index">List Employers</a>
+                                    <a class="dropdown-item" asp-controller="Skill" asp-action="Index">List Skills</a>
+                                </div>
+                            </div>
                         </li>
                         @* A bootstrap dropdown menu seemed to be a good fit to create an Add menu-option *@
                         <li class="dropdown">
