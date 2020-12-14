@@ -1,23 +1,20 @@
 ﻿@model List<TechJobsPersistent.Models.Skill>
-
-<h1>In-demand Skills</h1>
-
-<p><a asp-controller="Skill" asp-action="Add">Add a Skill</a></p>
-
-@if (Model.Count == 0)
-{
-    <p>No skills are currently listed!</p>
-}
-else
-{
-    <div>
-        <ul>
-            @foreach (Skill skill in Model)
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr><th>In-demand Skills</th></tr>
+        </thead>
+        <tbody>
+            @if (Model.Count == 0)
             {
-                <li>
-                    <a asp-controller="Skill" asp-action="About" asp-route-id="@skill.Id">@skill.Name</a>
-                </li>
+                <tr><td>No skills are currently listed!</td></tr>
             }
-        </ul>
-    </div>
-}
+            else
+            {
+                @foreach (Skill skill in Model)
+                {
+                    <tr><td><a class="btn btn-block shadow-none text-left" asp-controller="Skill" asp-action="About" asp-route-id="@skill.Id">@skill.Name</a></td></tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div><a asp-controller="Skill" asp-action="Add">Add a Skill</a></div>
