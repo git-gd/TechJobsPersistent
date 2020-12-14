@@ -14,10 +14,10 @@
         @foreach (var job in ViewBag.jobs)
         {
             <tr>
-                <td>@job.JobId</td>
-                <td>@job.Name</td>
-                <td>@job.EmployerName</td>
-                <td>@job.SkillText</td>
+                <td><a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.JobId">@job.JobId</a></td>
+                <td><a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.JobId">@job.Name</a></td>
+                <td><a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.JobId">@job.EmployerName</a></td>
+                <td><a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.JobId">@job.SkillText</a></td>
             </tr>
         }
     </table>
