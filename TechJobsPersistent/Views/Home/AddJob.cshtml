@@ -20,9 +20,12 @@
     {
     <div class="form-group">
         @foreach (var skill in Model.Skills)
-        {
-            <label for="@skill.Id">@skill.Name</label>
-            <input id="@skill.Id" name="selectedSkills" type="checkbox" value="@skill.Id" />
+        {<div class="checkbox">
+             <div class="form-inline">
+                 <input id="@skill.Id" name="selectedSkills" type="checkbox" value="@skill.Id" />
+                 <label for="@skill.Id">@skill.Name</label>
+             </div>
+        </div>
         }
     </div>
     }

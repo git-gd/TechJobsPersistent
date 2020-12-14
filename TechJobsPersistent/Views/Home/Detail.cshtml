@@ -2,7 +2,7 @@
 
 <h1>@Model.Name</h1>
 
-<table class="table">
+<table class="table table-bordered table-hover">
     <tr>
         <th>Employer</th>
         <td>@Model.EmployerName</td>
@@ -14,4 +14,4 @@
 
 </table>
 
-<a asp-controller="Skill" asp-action="AddJob" asp-route-id="@Model.JobId">Add additional skills</a>
+<p><a asp-controller="Skill" asp-action="AddJob" asp-route-id="@Model.JobId">Add additional skills</a></p>
