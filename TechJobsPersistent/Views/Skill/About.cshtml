@@ -6,14 +6,21 @@
 }
 else
 {
-    <h1>Jobs with the Skill: @Model[0].Skill.Name</h1>
-    <p>Skill Description: @Model[0].Skill.Description</p>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Jobs with the Skill: @Model[0].Skill.Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>Skill Description: @Model[0].Skill.Description</th>
+        </tr>
 
-    <ul>
         @foreach (var jobSkill in Model)
         {
-            <li>@jobSkill.Job.Name</li>
+            <tr><td><a class="btn btn-block btn-link shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@jobSkill.Job.Id">@jobSkill.Job.Name</a></td></tr>
         }
-    </ul>
-
+    </tbody>
+</table>
 }
