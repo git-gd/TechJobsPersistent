@@ -17,9 +17,9 @@ else
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
-                <th>Employer</th>
-                <th>Location</th>
-                <th>Job</th>
+                <th><a asp-controller="Home" asp-action="Index" asp-route-sort="Employer" style="color:@(@ViewBag.Sort == "Employer"?"lightblue;":"white;")">Employer</a></th>
+                <th><a asp-controller="Home" asp-action="Index" asp-route-sort="Location" style="color:@(@ViewBag.Sort == "Location"?"lightblue;":"white;")">Location</a></th>
+                <th><a asp-controller="Home" asp-action="Index" style="color:@(@ViewBag.Sort == null?"lightblue;":"white;")">Job</a></th>
             </tr>
         </thead>
         <tbody>

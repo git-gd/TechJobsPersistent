@@ -18,9 +18,23 @@ namespace TechJobsPersistent.Controllers
             context = dbContext;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string sort)
         {
-            List<Job> jobs = context.Jobs.Include(j => j.Employer).ToList();
+            List<Job> jobs;
+            if (sort != null)
+            {
+                ViewBag.Sort = sort;
+                if (sort == "Employer")
+                {
+                    jobs = context.Jobs.Include(j => j.Employer).OrderBy(o => o.Employer.Name).ToList();
+                } else
+                {
+                    jobs = context.Jobs.Include(j => j.Employer).OrderBy(o => o.Employer.Location).ToList();
+                }
+            }
+            else {
+                jobs = context.Jobs.Include(j => j.Employer).OrderBy(o => o.Name).ToList();
+            }            
 
             return View(jobs);
         }
