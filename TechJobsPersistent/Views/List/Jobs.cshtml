@@ -11,6 +11,12 @@
                 <th>Skills</th>
             </tr>
         </thead>
+        @if (ViewBag.jobs.Count == 0)
+        {
+            <tr><td colspan="4">No Jobs Found!</td></tr>
+        }
+        else
+        {
         @foreach (var job in ViewBag.jobs)
         {
             <tr>
@@ -19,6 +25,7 @@
                 <td><a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.JobId">@job.EmployerName</a></td>
                 <td><a class="btn btn-block shadow-none text-left" asp-controller="Home" asp-action="Detail" asp-route-id="@job.JobId">@job.SkillText</a></td>
             </tr>
+        }
         }
     </table>
 

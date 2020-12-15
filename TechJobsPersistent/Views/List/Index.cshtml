@@ -23,15 +23,15 @@
                     {
                         @foreach (var item in ViewBag.employers)
                         {
-                            <a class="btn btn-secondary mt-1" asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
+                            <a class="btn @(ViewBag.noemployers.Contains(item.Id)?"btn-secondary":"btn-danger") mt-1" asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
                                 
-                        }
+                        }   @*This part was rushed last minute and is not the best way to highlight employers and skills with no associated jobs*@
                     }
                     else
                     {
                         @foreach (var item in ViewBag.skills)
                         {
-                            <a class="btn btn-secondary mt-1" asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
+                            <a class="btn @(ViewBag.noskills.Contains(item.Id)?"btn-secondary":"btn-danger") mt-1" asp-controller="List" asp-action="Jobs" asp-route-column="@category" asp-route-value="@item.Name">@item.Name</a>
                         }
                     }
                 </td>

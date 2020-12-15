@@ -39,6 +39,9 @@ namespace TechJobsPersistent.Controllers
             ViewBag.tablechoices = TableChoices;
             ViewBag.employers = context.Employers.ToList();
             ViewBag.skills = context.Skills.ToList();
+            // The following two lists noemployers and noskills are used to highlight employers and skills with no jobs
+            ViewBag.noemployers = context.Jobs.Select(j => j.EmployerId).ToList();
+            ViewBag.noskills = context.JobSkills.Select(ns => ns.SkillId).ToList();
             return View();
         }
 
