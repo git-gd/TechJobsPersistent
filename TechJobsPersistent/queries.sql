@@ -18,7 +18,8 @@
 --SELECT s.Name, s.Description
 --FROM skills s
 --JOIN jobskills j ON s.Id = j.SkillId
---GROUP BY s.Name;
+--GROUP BY s.Name
+--ORDER BY s.Name ASC;
 
 
 -- You will need to make use of “is not null”. ...???
