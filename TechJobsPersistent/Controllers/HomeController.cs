@@ -58,7 +58,7 @@ namespace TechJobsPersistent.Controllers
                 };
 
                 context.Jobs.Add(job);
-                context.SaveChanges();
+                //context.SaveChanges();
 
                 // Our selected Skill Id is returned in the selectedSkills string Array
                 // Our job Id was just created by MySQL in the previous SaveChanges()
@@ -67,7 +67,7 @@ namespace TechJobsPersistent.Controllers
                     JobSkill jobSkill = new JobSkill
                     {
                         SkillId = int.Parse(selected),
-                        JobId = job.Id
+                        Job = job
                     };
 
                     context.JobSkills.Add(jobSkill);
