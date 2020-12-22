@@ -33,7 +33,7 @@ namespace TechJobsPersistent.Controllers
                 }
             }
             else {
-                jobs = context.Jobs.Include(j => j.Employer).OrderBy(o => o.Name).ToList();
+                jobs = context.Jobs.Include(j => j.Employer).OrderBy(o => o.Name).ToList(); // TODO: If the app can't connnect to MySQL this throws an error.. catch and deal with this
             }            
 
             return View(jobs);
@@ -47,7 +47,7 @@ namespace TechJobsPersistent.Controllers
         }
 
         [HttpPost]
-        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel, String[] selectedSkills)
+        public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -58,11 +58,8 @@ namespace TechJobsPersistent.Controllers
                 };
 
                 context.Jobs.Add(job);
-                //context.SaveChanges();
 
-                // Our selected Skill Id is returned in the selectedSkills string Array
-                // Our job Id was just created by MySQL in the previous SaveChanges()
-                foreach (string selected in selectedSkills)
+                foreach (string selected in addJobViewModel.SelectedSkills)
                 {
                     JobSkill jobSkill = new JobSkill
                     {
@@ -78,10 +75,8 @@ namespace TechJobsPersistent.Controllers
                 return Redirect("/home/");
             }
 
-            // We need to repopulate some fields when our ModelState is invalid
             addJobViewModel.SetEmployers(context.Employers.ToList());
             addJobViewModel.Skills = context.Skills.ToList();
-            addJobViewModel.SelectedSkills = selectedSkills;
 
             return View("AddJob", addJobViewModel);
         }
