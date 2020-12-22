@@ -50,9 +50,23 @@
             for (let i = 0; i < pTags.length; i++)
             {
                 let oldTxt = pTags[i].innerHTML;
+                let txtIdx = null;
 
                 /* Find and skip everything before the colon */
-                let txtIdx = oldTxt.indexOf(":") + 1; 
+                /* SWITCH the search type so we only highlight the searched field(s) */
+                switch("@ViewBag.searchType"){
+                    case "employer":
+                        txtIdx = oldTxt.indexOf("Employer: ");
+                        break;
+                    case "skill":
+                        txtIdx = oldTxt.indexOf("Skills: ");
+                        break;
+                    default:
+                        txtIdx = oldTxt.indexOf(":") + 1;
+                }
+
+                /* If we did not find a match skip processing and continue with the loop */
+                if (txtIdx == -1) continue;                
 
                 /* Find first searchterm */
                 txtIdx = oldTxt.toLowerCase().indexOf(searched.toLowerCase(), txtIdx);
